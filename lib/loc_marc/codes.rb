@@ -3,7 +3,11 @@
 module LocMarc
   module Codes
     class CodeList
-      DATABASE = {}
+      # Each subclass keeps its own entries in a class-level instance
+      # variable, so codes from different lists do not overwrite each other.
+      def self.database
+        @database ||= {}
+      end
 
       def self.parse_raw(raw_data)
         raw_data.split("\n").each do |line|
@@ -12,7 +16,7 @@ module LocMarc
           deprecated = (code[0] == '-')
           code = code[1..-1] if deprecated
 
-          DATABASE[code] = {
+          database[code] = {
             code: code,
             description: desc,
             deprecated: deprecated
@@ -21,7 +25,7 @@ module LocMarc
       end
 
       def self.lookup(code)
-        DATABASE[code]
+        database[code]
       end
     end
   end

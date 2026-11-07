@@ -27,9 +27,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.required_ruby_version = ">= 2.7.0"
 
-  spec.add_runtime_dependency "liquid", "~> 5"
-  spec.add_runtime_dependency "relaton", "~> 1.18.0"
-  spec.add_runtime_dependency "thor"
+  spec.add_runtime_dependency "nokogiri"
   spec.add_runtime_dependency "shale"
 
   spec.metadata["homepage_uri"] = spec.homepage
